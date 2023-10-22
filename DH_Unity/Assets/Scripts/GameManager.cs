@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     public List<Sprite> itemIcons;
     public Image book;
     public Image hand;
+    public Image endScreen;
     bool bookOpen;
     private void Awake() {
         gameoverText.text = "";
+        endScreen.gameObject.SetActive(false);
         book.gameObject.SetActive(false);
         bookOpen = false;
     }
@@ -24,9 +26,6 @@ public class GameManager : MonoBehaviour
         else book.gameObject.SetActive(true);
         bookOpen = true;
     }
-    public void CloseBook() {
-        book.gameObject.SetActive(false);
-    }
 
     public void Victory() {
         Time.timeScale = 0;
@@ -35,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void Death() {
         Time.timeScale = 0;
+        endScreen.gameObject.SetActive(true);
         gameoverText.text = "You Died.";
     }
 }
