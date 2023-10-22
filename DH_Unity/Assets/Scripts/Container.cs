@@ -7,17 +7,21 @@ public class Container : MonoBehaviour, IInteractable {
     public ItemData contents;
     public ItemManager manager;
     public TMP_Text containerDesc;
+    AudioSource source;
     float DescTimeout = 0f;
     
     void Update() {
-        DescTimeout -= Time.deltaTime;
-        if (DescTimeout < 0f) {
-            containerDesc.text = string.Empty;
-            DescTimeout = 0f;
+        if (DescTimeout > 0f) {
+            DescTimeout -= Time.deltaTime;
+            if (DescTimeout < 0f) {
+                containerDesc.text = string.Empty;
+                DescTimeout = 0f;
+            }
         }
     }
 
     void Start() {
+        source = GetComponent<AudioSource>();
         manager = FindObjectOfType<ItemManager>();
         containerDesc.text = string.Empty;
     }
@@ -36,6 +40,7 @@ public class Container : MonoBehaviour, IInteractable {
             containerDesc.text = "Empty";
             DescTimeout = 2f;
         }
+        source.Play();
     }
     public string GetUIDescription() {
         return "";

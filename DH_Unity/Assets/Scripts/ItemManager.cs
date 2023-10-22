@@ -5,7 +5,6 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Progress;
 
 [System.Serializable]
 public class ItemData {
