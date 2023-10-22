@@ -6,9 +6,11 @@ public class DemonFrontSensor : MonoBehaviour
 {
     public Transform target;
     bool targetVisible = false;
-    public float maxDistance = 5f;
+    public float maxDistance = 10f;
     public float maxAngle = 45f;
     public LayerMask sightBlockers;
+    
+    
 
     public bool TargetVisible() {
         return targetVisible;

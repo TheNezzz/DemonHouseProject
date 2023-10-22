@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4096279940699714531}
   - component: {fileID: 4930923600242877733}
   - component: {fileID: 6409043315089663974}
-  - component: {fileID: 8619597722854940078}
   - component: {fileID: 782850706476746235}
   - component: {fileID: 6888446009863732950}
   m_Layer: 0
@@ -59,6 +58,10 @@ MonoBehaviour:
   - {fileID: 0}
   navThreshold: 0.4
   StunTimeout: 4
+  roamSpeed: 1
+  chaseSpeed: 2
+  detectionTime: 2
+  detectionTimer: 0
 --- !u!114 &6409043315089663974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,18 +80,6 @@ MonoBehaviour:
   sightBlockers:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &8619597722854940078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2326433640035522882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b894fb87c6556b948a3f357eb3e95ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &782850706476746235
 NavMeshAgent:
   m_ObjectHideFlags: 0

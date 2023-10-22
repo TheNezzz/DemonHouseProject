@@ -5,7 +5,7 @@ using UnityEngine;
 public class DemonSprite : MonoBehaviour
 {
     Vector3 lastKnownPos;
-    float dirTime = 0.5f;
+    float dirTime = 0.05f;
     
     private void Awake() {
         lastKnownPos = transform.position;
@@ -16,7 +16,7 @@ public class DemonSprite : MonoBehaviour
         dirTime -= Time.deltaTime;
         if (dirTime < 0) { 
             CheckFacing();
-            dirTime = 0.5f;
+            dirTime = 0.05f;
         }
     }
 
