@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6409043315089663974}
   - component: {fileID: 782850706476746235}
   - component: {fileID: 6888446009863732950}
+  - component: {fileID: 2700227977861201847}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Untagged
@@ -129,6 +130,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!95 &2700227977861201847
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326433640035522882}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a53dcf2e3650dc449318249ce8330cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2533532064620440190
 GameObject:
   m_ObjectHideFlags: 0
