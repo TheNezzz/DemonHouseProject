@@ -27,10 +27,10 @@ public class PlayerSpriteScript : MonoBehaviour {
         void CheckFacing() {
             var currentPos = transform.position;
             if (currentPos.x < lastKnownPos.x) {
-                transform.localScale = new Vector3(-0.24f, 0.24f, 0.24f);
+                transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
             }
             else if (currentPos.x > lastKnownPos.x) {
-                transform.localScale = new Vector3(0.24f, 0.24f, 0.24f);
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             lastKnownPos = currentPos;
         }

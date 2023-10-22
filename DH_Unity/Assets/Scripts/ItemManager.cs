@@ -4,6 +4,8 @@ using System.ComponentModel;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class ItemData {
@@ -16,24 +18,30 @@ public class ItemData {
 
 public class ItemManager : MonoBehaviour
 {
+    public TMP_Text itemUI;
     public ItemData[] items;
     public List<Container> possibleContainers;
     public ItemData carriedItem;
     public AudioManager audioManager;
     public List<string> neededItem;
+    //public TMP_Text interactDescription;
     int neededItemIndex = 0;
+    //float DescTimeout = 0f;
 
     public bool carryingItem = false;
 
     public bool TryGrabItem(ItemData item) {
         if (carryingItem != false) {
+            //interactDescription.text = "Already carrying something.";
             print("Already carrying something.");
+            //DescTimeout = 2f;
             return false;
         }
         if (item.id == neededItem[neededItemIndex]) {
             carriedItem = item;
             print("Picked up " + item.id);
             carryingItem = true;
+            itemUI.text = item.id;
             neededItemIndex++;
             return true;
         }
@@ -60,11 +68,11 @@ public class ItemManager : MonoBehaviour
         audioManager.PlayItemSound(carriedItem.itemAudio);
         carriedItem = null;
         carryingItem= false;
+        itemUI.text = "Empty";
 
     }
 
     private void Start() {
         DistributeItems();
-        
     }
 }
