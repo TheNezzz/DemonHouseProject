@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Container : MonoBehaviour, IInteractable
-{   
+public class Container : MonoBehaviour, IInteractable {
     public ItemData contents;
     public ItemManager manager;
     public TMP_Text containerDesc;
     float DescTimeout = 0f;
-    void Update()
-    {
+    
+    void Update() {
         DescTimeout -= Time.deltaTime;
         if (DescTimeout < 0f) {
             containerDesc.text = string.Empty;
             DescTimeout = 0f;
         }
     }
-    
+
     void Start() {
-      manager = FindObjectOfType<ItemManager>();
-      containerDesc.text = string.Empty;
+        manager = FindObjectOfType<ItemManager>();
+        containerDesc.text = string.Empty;
     }
     public void Interact() {
         print("Opened cabinet.");
@@ -32,9 +31,11 @@ public class Container : MonoBehaviour, IInteractable
                 contents = null;
             }
         }
-        else print("Empty");
-        containerDesc.text = "Empty";
-        DescTimeout = 2f;
+        else {
+            print("Empty");
+            containerDesc.text = "Empty";
+            DescTimeout = 2f;
+        }
     }
     public string GetUIDescription() {
         return "";
