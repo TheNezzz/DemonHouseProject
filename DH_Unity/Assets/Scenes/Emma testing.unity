@@ -498,8 +498,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.005800009, y: -0.00034999847, z: 0}
-    m_Extent: {x: 7.2829, y: 7.28545, z: 0}
+    m_Center: {x: 0.00040006638, y: 0.003700018, z: 0}
+    m_Extent: {x: 7.2855, y: 7.2819996, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -780,6 +780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameoverText: {fileID: 1847550324}
+  itemIcons: []
+  book: {fileID: 0}
+  hand: {fileID: 0}
 --- !u!4 &393882600
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,8 +1017,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00020003319, y: 0.0020000935, z: 0}
-    m_Extent: {x: 7.2864, y: 7.2801, z: 0}
+    m_Center: {x: 0.0046498775, y: 0.0032999516, z: 0}
+    m_Extent: {x: 7.28345, y: 7.2845, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1953,9 +1956,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a56ffb1378bbcd74b89d52aecc560185, type: 3}
   - {fileID: 8300000, guid: 9dbb856adc5141644b33af094b192d6d, type: 3}
   currentClip: {fileID: 0}
-  source: {fileID: 0}
-  minWaitBetweenPlays: 2
-  maxWaitBetweenPlays: 5
+  source: {fileID: 1215493096}
+  minWaitBetweenPlays: 10
+  maxWaitBetweenPlays: 15
   waitTimeCountdown: -1
 --- !u!1001 &1222339442
 PrefabInstance:
@@ -2293,7 +2296,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a03cc66133e2b994bb38e6c28c3421fc, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8024529efa233314f85b5addc05565a1, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &1350911241
 MeshCollider:
@@ -3955,6 +3958,18 @@ PrefabInstance:
     - target: {fileID: 1925991832800183671, guid: 7d24d6554b80cc944b1bce765fa6a0c3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608055737632346062, guid: 7d24d6554b80cc944b1bce765fa6a0c3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.76396215
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608055737632346062, guid: 7d24d6554b80cc944b1bce765fa6a0c3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.76396215
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608055737632346062, guid: 7d24d6554b80cc944b1bce765fa6a0c3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.76396215
       objectReference: {fileID: 0}
     - target: {fileID: 4608055737632346062, guid: 7d24d6554b80cc944b1bce765fa6a0c3, type: 3}
       propertyPath: m_LocalPosition.x
