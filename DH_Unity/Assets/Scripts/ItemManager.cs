@@ -10,6 +10,7 @@ public class ItemData {
     public string id;
     public Sprite iconSprite;
     public AudioClip itemAudio;
+
     // description, etc?
 }
 
@@ -18,7 +19,7 @@ public class ItemManager : MonoBehaviour
     public ItemData[] items;
     public List<Container> possibleContainers;
     public ItemData carriedItem;
-
+    public AudioManager audioManager;
     public List<string> neededItem;
     int neededItemIndex = 0;
 
@@ -56,6 +57,7 @@ public class ItemManager : MonoBehaviour
 
     public void UsedItem() {
         print("Used " + carriedItem.id + ".");
+        audioManager.PlayItemSound(carriedItem.itemAudio);
         carriedItem = null;
         carryingItem= false;
 
