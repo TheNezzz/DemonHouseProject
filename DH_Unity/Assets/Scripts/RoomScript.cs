@@ -30,8 +30,9 @@ public class RoomScript : MonoBehaviour
         if (other.GetComponentInParent<Demon>() != null) {
             demonInRoom = true;
             if (lightState == LightState.On) { 
-            lightState = LightState.Flickering; 
-        }
+            lightState = LightState.Flickering;
+             roomLight.intensity = flickerMaxIntensity;
+            }
         }
     }
     private void OnTriggerStay(Collider other) {
@@ -59,7 +60,22 @@ public class RoomScript : MonoBehaviour
            if (lightState == LightState.On){
             roomLight.intensity = 1.75f;
         }
-        
+
+        if (lightState == LightState.Flickering) {
+            float flickerTimer = flickerTimeDif;
+            flickerTimer -= Time.deltaTime;
+            if (flickerTimer <= 0) {
+                if (roomLight.intensity == flickerMaxIntensity) {
+                    roomLight.intensity = flickerMinIntensity;
+                    flickerTimer = flickerTimeDif;
+                }
+                else {
+                    roomLight.intensity = flickerMaxIntensity;
+                    flickerTimer = flickerTimeDif;
+                }
+
+            }
+        }
         
         if (lightState == LightState.Off){
             roomLight.intensity = 0f; 
