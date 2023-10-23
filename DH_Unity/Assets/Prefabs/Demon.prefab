@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1936830038231157056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373027004328644539}
+  - component: {fileID: 9108885911469084615}
+  m_Layer: 7
+  m_Name: DemonCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373027004328644539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936830038231157056}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4096279940699714531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9108885911469084615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936830038231157056}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2326433640035522882
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +69,7 @@ GameObject:
   - component: {fileID: 2700227977861201847}
   - component: {fileID: 3377753373629246084}
   - component: {fileID: 7371803939675361124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,6 +92,7 @@ Transform:
   - {fileID: 5199419638717308800}
   - {fileID: 7799578585016703549}
   - {fileID: 8916943335917798112}
+  - {fileID: 1373027004328644539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4930923600242877733
@@ -59,10 +113,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   navThreshold: 0.4
   StunTimeout: 4
   roamSpeed: 1
-  chaseSpeed: 2
+  chaseSpeed: 4
   detectionTime: 2
   detectionTimer: 0
 --- !u!114 &6409043315089663974
@@ -78,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  maxDistance: 5
+  maxDistance: 10
   maxAngle: 45
   sightBlockers:
     serializedVersion: 2
@@ -276,8 +335,8 @@ GameObject:
   - component: {fileID: 5199419638717308800}
   - component: {fileID: 9217806314199400216}
   - component: {fileID: 4499537650759490230}
-  m_Layer: 0
-  m_Name: DemonCollider
+  m_Layer: 7
+  m_Name: DemonTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +370,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -341,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7799578585016703549}
   - component: {fileID: 7079432227089593646}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DemonLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,6 +484,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemonCrop
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7896267326982391297, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24
@@ -481,9 +548,61 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6627991806376485586, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6523992257907869085, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -6523992257907869085, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4566971369014340499, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4060668452120639334, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2613743468171610832, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2305067241938420326, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -735985239012028135, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596357972171728719, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769465101944927738, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454622554369155318, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034157148374247404, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310391221652351389, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980749622509750689, guid: 92fd55c5bfda1c9448351cb57aa3539a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

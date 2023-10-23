@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6379969034513390813}
   - component: {fileID: 9188502123282158554}
   - component: {fileID: 6800458535820963273}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  audioManager: {fileID: 0}
 --- !u!114 &5723949927957162332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430bea7cb06a86046bba1d8f0f574be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactPrompt: {fileID: 0}
 --- !u!65 &6379969034513390813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -197,7 +199,7 @@ GameObject:
   - component: {fileID: 5884207650180096095}
   - component: {fileID: 3065441779633255081}
   - component: {fileID: 3759772064799782407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -334,6 +336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterGirlCrop2.2
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24
@@ -389,6 +395,34 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816393464223927720, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4462238822094510828, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4060668452120639334, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -17527103855688758, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980749622509750689, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983632319202126853, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981027048380848382, guid: 8e3355cb26a2dca4d8eaca7f127ccf21, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

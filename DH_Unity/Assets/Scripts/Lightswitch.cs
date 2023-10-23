@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Lightswitch : MonoBehaviour
+public class Lightswitch : MonoBehaviour, IInteractable
 {
-    public bool switchOn = true;
-    public GameObject lightBulb;
-
-    private void Awake() {
-        
+    RoomScript room;
+    
+    void Awake() {
+        room = GetComponentInParent<RoomScript>();
     }
 
+    public void Interact() {
+        print("Flipped lightswitch");
+        room.LightOn();
+    }
 
-    private void OnTriggerEnter(Collider other) {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            
-        }
+    public string GetUIDescription() {
+        return "";
     }
 }
