@@ -12,18 +12,25 @@ public class RoomScript : MonoBehaviour
     bool demonInRoom = false;
     public float lightOutReq = 4f;
     float lightOutTimer;
-    float flickerMaxIntensity = 1f;
-    float flickerMinIntensity = 0.2f;
-    float flickerTimeDif = 0.5f;
+    public float flickerMaxIntensity = 1f;
+    public float flickerMinIntensity = 0.2f;
+    public int smoothing = 5;
+
+    Queue<float> smoothQueue;
+    float lastSum = 0;
 
     private void Awake() {
+        smoothQueue = new Queue<float>(smoothing);
         lightOutTimer = lightOutReq;
         lightState = LightState.On;
         roomLight = GetComponent<Light2D>();
         demon = FindObjectOfType<Demon>();
     }
     public void LightOn() {
-        lightState = LightState.On;    
+        lightState = LightState.On;   
+        if (demonInRoom) {
+            demon.demonState = Demon.DemonState.Stunned;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -31,7 +38,6 @@ public class RoomScript : MonoBehaviour
             demonInRoom = true;
             if (lightState == LightState.On) { 
             lightState = LightState.Flickering;
-             roomLight.intensity = flickerMaxIntensity;
             }
         }
     }
@@ -57,30 +63,22 @@ public class RoomScript : MonoBehaviour
     }
 
     private void Update() {
-           if (lightState == LightState.On){
+        while (smoothQueue.Count >= smoothing) {
+            lastSum -= smoothQueue.Dequeue();
+        }
+            if (lightState == LightState.On){
             roomLight.intensity = 1.75f;
+        }else if (lightState == LightState.Flickering) {
+            float newVal = Random.Range(flickerMinIntensity, flickerMaxIntensity);
+            smoothQueue.Enqueue(newVal);
+            lastSum += newVal;
+
+            roomLight.intensity = lastSum / smoothQueue.Count;
         }
 
-        if (lightState == LightState.Flickering) {
-            float flickerTimer = flickerTimeDif;
-            flickerTimer -= Time.deltaTime;
-            if (flickerTimer <= 0) {
-                if (roomLight.intensity == flickerMaxIntensity) {
-                    roomLight.intensity = flickerMinIntensity;
-                    flickerTimer = flickerTimeDif;
-                }
-                else {
-                    roomLight.intensity = flickerMaxIntensity;
-                    flickerTimer = flickerTimeDif;
-                }
-
-            }
-        }
-        
         if (lightState == LightState.Off){
             roomLight.intensity = 0f; 
         }
-
 
     }
 
