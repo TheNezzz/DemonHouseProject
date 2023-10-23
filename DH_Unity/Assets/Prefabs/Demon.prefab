@@ -121,9 +121,10 @@ MonoBehaviour:
   navThreshold: 0.4
   StunTimeout: 4
   roamSpeed: 1
-  chaseSpeed: 4
+  chaseSpeed: 2
   detectionTime: 2
   detectionTimer: 0
+  speedMultiplier: 0.25
 --- !u!114 &6409043315089663974
 MonoBehaviour:
   m_ObjectHideFlags: 0

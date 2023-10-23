@@ -16,10 +16,15 @@ public class Demon : MonoBehaviour
     float stunTimer = 0f;
     public float StunTimeout = 4f;
     DemonFrontSensor sensorFront;
-    public float roamSpeed = 1;
-    public float chaseSpeed = 2f;
+    public float startingRoamSpeed = 1f;
+    float roamSpeed = 1f;
+    public float startingChaseSpeed = 2f; 
+    float chaseSpeed = 2f;
     public float detectionTime = 2f;
     public float detectionTimer = 0;
+
+    int darkRooms = 0;
+    public float speedMultiplier = 0.1f;
 
 
     private void Awake() {
@@ -30,8 +35,22 @@ public class Demon : MonoBehaviour
         demonAI.destination = waypoints[nextWaypoint].position;
         
     }
+
+    public void NewDarkRoom() {
+        darkRooms++;
+        roamSpeed = startingRoamSpeed + (darkRooms * speedMultiplier);
+        chaseSpeed = startingChaseSpeed + (darkRooms * speedMultiplier);
+    }
+
+    public void LightRoom() {
+        roamSpeed = startingRoamSpeed + (darkRooms * speedMultiplier);
+        chaseSpeed = startingChaseSpeed + (darkRooms * speedMultiplier);
+        darkRooms--;
+    }
     private void Update() {
         var playerVisible = sensorFront.TargetVisible();
+
+        
 
         if (playerVisible == true) {
             detectionTimer += Time.deltaTime;

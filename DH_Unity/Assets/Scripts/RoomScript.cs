@@ -27,9 +27,12 @@ public class RoomScript : MonoBehaviour
         demon = FindObjectOfType<Demon>();
     }
     public void LightOn() {
-        lightState = LightState.On;   
-        if (demonInRoom) {
-            demon.demonState = Demon.DemonState.Stunned;
+        if (lightState == LightState.Off) {
+            lightState = LightState.On;
+            demon.LightRoom();
+            if (demonInRoom) {
+                demon.demonState = Demon.DemonState.Stunned;
+            }
         }
     }
 
@@ -47,6 +50,7 @@ public class RoomScript : MonoBehaviour
             lightOutTimer -= Time.deltaTime;
                 if (lightOutTimer <= 0) {
                     lightState = LightState.Off;
+                    demon.NewDarkRoom();
                 }
             }
         }
