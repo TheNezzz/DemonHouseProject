@@ -9,7 +9,7 @@ public class Demon : MonoBehaviour
     public DemonState demonState = DemonState.Roaming;
     NavMeshAgent demonAI;
     public List<Transform> waypoints;
-    int nextWaypoint;
+    public int nextWaypoint;
     public float navThreshold = 1f;
     Rigidbody rb;
     Vector3 lastSeenPlayerPos;
@@ -26,15 +26,19 @@ public class Demon : MonoBehaviour
     int darkRooms = 0;
     public float speedMultiplier = 0.1f;
 
+    public void GracePeriod() {
+        demonAI.speed = 0; 
+    }
 
-    private void Start() {
-        print("Demon awake");
+
+    private void Awake() {
+        print("Demon spawned");
         demonAI = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         sensorFront = GetComponent<DemonFrontSensor>();
         nextWaypoint = Random.Range(0, waypoints.Count);
         demonAI.destination = waypoints[nextWaypoint].position;
-        
+        //NewDarkRoom();
     }
 
     public void NewDarkRoom() {
@@ -46,14 +50,13 @@ public class Demon : MonoBehaviour
 
     public void LightRoom() {
         print("Slow speed");
+        darkRooms--;
         roamSpeed = startingRoamSpeed + (darkRooms * speedMultiplier);
         chaseSpeed = startingChaseSpeed + (darkRooms * speedMultiplier);
-        darkRooms--;
+        
     }
     private void Update() {
         var playerVisible = sensorFront.TargetVisible();
-
-        
 
         if (playerVisible == true) {
             detectionTimer += Time.deltaTime;
@@ -63,35 +66,38 @@ public class Demon : MonoBehaviour
                 detectionTimer = 0f;
             }
         }
-    }
 
-    private void FixedUpdate() {
-        if (demonState == DemonState.Stunned) {
+        if (demonState == DemonState.Stunned)
+        {
             print("Demon stunned");
             stunTimer += Time.deltaTime;
             demonAI.speed = 0f;
-            if (stunTimer >= StunTimeout) {
+            if (stunTimer >= StunTimeout)
+            {
                 demonState = DemonState.Roaming;
                 nextWaypoint = Random.Range(0, waypoints.Count);
                 demonAI.destination = waypoints[nextWaypoint].position;
                 stunTimer = 0f;
             }
         }
-        else if (demonState == DemonState.Roaming) {
+        else if (demonState == DemonState.Roaming)
+        {
             print("Demon roaming");
             demonAI.speed = roamSpeed;
-            if (Vector3.Distance(transform.position, waypoints[nextWaypoint].position) < navThreshold) {
+            if (Vector3.Distance(transform.position, waypoints[nextWaypoint].position) < navThreshold)
+            {
                 nextWaypoint = Random.Range(0, waypoints.Count);
                 demonAI.destination = waypoints[nextWaypoint].position;
             }
-        }else if (demonState == DemonState.Chasing) {
+        }
+        else if (demonState == DemonState.Chasing)
+        {
             print("Demon chasing");
             demonAI.speed = chaseSpeed;
             demonAI.destination = sensorFront.target.position;
         }
-
-        
-    }    
+    }
+    
     }
 
 
