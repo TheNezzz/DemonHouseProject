@@ -27,7 +27,8 @@ public class Demon : MonoBehaviour
     public float speedMultiplier = 0.1f;
 
 
-    private void Awake() {
+    private void Start() {
+        print("Demon awake");
         demonAI = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         sensorFront = GetComponent<DemonFrontSensor>();
@@ -37,12 +38,14 @@ public class Demon : MonoBehaviour
     }
 
     public void NewDarkRoom() {
+        print("Increase speed");
         darkRooms++;
         roamSpeed = startingRoamSpeed + (darkRooms * speedMultiplier);
         chaseSpeed = startingChaseSpeed + (darkRooms * speedMultiplier);
     }
 
     public void LightRoom() {
+        print("Slow speed");
         roamSpeed = startingRoamSpeed + (darkRooms * speedMultiplier);
         chaseSpeed = startingChaseSpeed + (darkRooms * speedMultiplier);
         darkRooms--;
@@ -64,6 +67,7 @@ public class Demon : MonoBehaviour
 
     private void FixedUpdate() {
         if (demonState == DemonState.Stunned) {
+            print("Demon stunned");
             stunTimer += Time.deltaTime;
             demonAI.speed = 0f;
             if (stunTimer >= StunTimeout) {
@@ -74,12 +78,14 @@ public class Demon : MonoBehaviour
             }
         }
         else if (demonState == DemonState.Roaming) {
+            print("Demon roaming");
             demonAI.speed = roamSpeed;
             if (Vector3.Distance(transform.position, waypoints[nextWaypoint].position) < navThreshold) {
                 nextWaypoint = Random.Range(0, waypoints.Count);
                 demonAI.destination = waypoints[nextWaypoint].position;
             }
         }else if (demonState == DemonState.Chasing) {
+            print("Demon chasing");
             demonAI.speed = chaseSpeed;
             demonAI.destination = sensorFront.target.position;
         }

@@ -7,6 +7,7 @@ public class Ritual : MonoBehaviour, IInteractable
     public bool ritualReady = false;
     public ItemManager manager;
     public GameManager gameManager;
+    
 
     int usedItemIndex = 0;
     public List<GameObject> sprites = new List<GameObject>();
@@ -29,6 +30,8 @@ public class Ritual : MonoBehaviour, IInteractable
             
         }
     }
+
+    
     public string GetUIDescription() {
         return "";
     }

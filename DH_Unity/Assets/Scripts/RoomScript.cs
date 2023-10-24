@@ -25,6 +25,7 @@ public class RoomScript : MonoBehaviour
         lightState = LightState.On;
         roomLight = GetComponent<Light2D>();
         demon = FindObjectOfType<Demon>();
+
     }
     public void LightOn() {
         if (lightState == LightState.Off) {
@@ -38,6 +39,7 @@ public class RoomScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.GetComponentInParent<Demon>() != null) {
+            demon = FindObjectOfType<Demon>();
             demonInRoom = true;
             if (lightState == LightState.On) { 
             lightState = LightState.Flickering;
